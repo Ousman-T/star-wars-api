@@ -10,14 +10,13 @@ function App() {
             let res = await fetch('https://swapi.dev/api/starships/?format=json')
             let data = res.json();
             // if doesn't work put data.results
-            setStarship(data);
-        }
-
-        fetchStarShip();
+            setStarship(data.results);
+            console.log(starship);
+            console.log(data.results);
+          }
+          fetchStarShip()
+        },[])
         
-    }, [])
-    console.log(starship);
-    
     return (
       <div className="App">
       <h1>hello</h1>
