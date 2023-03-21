@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [starship, setStarship] = useState([]);
+  const [loading, setLoading] = useState(true);
+ 
+    useEffect(() => {
+        async function fetchStarShip(){
+            let res = await fetch('https://swapi.dev/api/starships/?format=json')
+            let data = res.json();
+            // if doesn't work put data.results
+            setStarship(data);
+        }
+
+        fetchStarShip();
+        
+    }, [])
+    console.log(starship);
+    
+    return (
+      <div className="App">
+      <h1>hello</h1>
     </div>
   );
 }
