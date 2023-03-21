@@ -1,25 +1,22 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect } from 'react';
 import './App.css';
-
+import { FetchStarShip } from './services/sw-api';
 function App() {
   const [starship, setStarship] = useState([]);
   const [loading, setLoading] = useState(true);
- 
+  
     useEffect(() => {
-        async function fetchStarShip(){
-            let res = await fetch('https://swapi.dev/api/starships/?format=json')
-            let data = res.json();
-            // if doesn't work put data.results
-            setStarship(data.results);
-            console.log(starship);
-            console.log(data.results);
-          }
-          fetchStarShip()
-        },[])
-        
-    return (
-      <div className="App">
-      <h1>hello</h1>
+
+      const ships = async () => {const data = FetchStarShip();  
+        console.log(ships);
+      }
+      })
+      return (
+        <div className="App">
+      <h1>Star Wars Ships</h1>
+      {this.ships.map((ship) => {
+        <div className='card'>{ship.name}</div>
+      })}
     </div>
   );
 }
